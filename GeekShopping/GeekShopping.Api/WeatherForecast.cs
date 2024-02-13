@@ -1,4 +1,4 @@
-namespace WebApi
+namespace GeekShopping.Api
 {
     public class WeatherForecast
     {
