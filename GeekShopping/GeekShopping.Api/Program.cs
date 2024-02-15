@@ -1,11 +1,28 @@
+
+
+//a variable to hold configuration
+using GeekShopping.Api.Configs;
+using GeekShopping.Api.Infra.Data.Context;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
+using WebApi.Configs;
+
+IConfiguration configuration;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+configuration = builder.Configuration;
+
+
+builder.Services.AddDependencyInjectionConfiguration(configuration);
+
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGenConfig();
+
+
 
 var app = builder.Build();
 
@@ -15,6 +32,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 
 app.UseHttpsRedirection();
 
